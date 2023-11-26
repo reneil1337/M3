@@ -1,0 +1,120 @@
+trail of thought for the epoch evaluation across multiple models
+
+
+starting with LahMysteriousSDXL_v40
+-> prompt base via https://civitai.com/images/2583548
+
+stone/waterfall/garden image
+- at 0.8 weight the shoes look "sneaker slike" across the board
+	- makes sense tho as we want to primarily have good result at 1 weight
+- epoch 00001 looks off: 
+	- arm has wrong color, overknees become transparent
+	- at 1.1 the entire arm is robotic
+	- skirt looks wrong
+	- makes sense, not trained enough
+- Eyes look off at weight 1 from epochs 00001 to 00003 --- epoch 00004 still a bit weird, epoch 00005 is great
+- Eyes look overtrained at weight 1 from 00006 onwards
+
+
+----- best result 00005 -> 2nd best? THERE IS NO SECOND BEST ---> ehehe no its prolly 00004 -> lets strip 00001, 00002 and 00009 moving forward
+
+
+
+#################
+
+another LahMysterious
+-> prompt base via https://civitai.com/images/2512699
+
+
+walk in town image
+- from 000006 across at weight 1, scilly looks overtrained,  the face/eyes are a clear indicator.
+- lets strip 00007 + 00008 this round but still keep 00006 as it becomes clearer that scilly looks great with less steps trained already
+- we will also stop to look at weight 0.8 to speed up the grid generation
+
+----- best result imho is 00004 at weight 1
+
+
+
+################
+
+lets continue with the dynavisionXLAll model
+-> prompt base via https://civitai.com/images/3172839
+
+scilly standing on cliff
+- this example generation includes highres fix via latent upscaler
+- all of these look fantastic. its hard to make a decision
+- we cut out 00006 and prompt as the lower epochs look very similar
+- we prompt again on a different seed without highres fix as we see two robotic arms across the board 
+- the second grid carries over the problem with the 2 robotic arms but imho we should ignore this for now and don't cut anything out
+- looking back after prompting bluepencil-XL I realized that the robotic arm always has a human hand across the board in the first grid
+- this is not the case anymore in the second grid so it seems to accur random according to seed
+
+------ 00005 at weight 1 looks most consistent
+
+###############
+
+Next up Bluepencil-XL
+-> prompt base via https://civitai.com/images/3583304
+
+- we stumble into the problem again that Scilly always has 2 robotic arms no matter which
+- we bring 00006 and 00007 back into the grid to see what happens. turns out that 6 is fine and at 7 the double robot arm appears again
+- overall the results look incredibly good. bluepencil v1 has a great training dataset and they've iterated a lot - one of the best anime models out there
+- we will strip out 00007 again tho as the eyes look weird across all weights
+- we create a new grid from 00003 to 00006 at weight 1 but prompt different seeds on the y axis to dig into the two robotic arms situation
+	- when we prompt with SD not everything is perfect so usually you prompt a batch of 4 or 8 or whatever images with different seed and select the best one
+	- in the end we need to select one LoRA file that is not overtrained as it should be able to work with a variety of models. also we can adjust weight as we prompt
+- the multiple seed grid shows us that higher epochs show less random issues with the hands. I'd prefer 000005 and 000006 over the lower 2 epochs. 
+- legs are broken at epoch 00004 2 out of 5 times
+- We remove 000003 as it never won any prompt till this point. 
+
+
+
+------ 000006 at weight 1 (seed 13337) turned out to be most beautiful
+
+##############
+
+A last prompt done with Bluepencil-XL
+-> based on the last one
+
+- epoch 4 at weight 1 results in two robot arms most of the time. we'll strip that out
+- epoch 5 and 6 both look very good
+
+----- 000005 at weight 1 (seed 1338) looks best tho -- several 000006 images are close
+
+############
+
+Next up SDXL Yamer's Anime
+-> prompt base via https://civitai.com/images/3711557
+
+- besides the occasional double robot arms across all epochs all epochs look amazing
+- the legs on epoch 6 are buggy multiple times tho
+- to evaluate the arms issue a bit further on this model and as it gets cleared that we will need to decide between epoch 5+6 I generate a grid of 16 images each via seed -1
+	- epoch 5: 12 robot, 1 invis, 3 correct
+	- epoch 6: 5 robot, 1 invis, 10 correct
+- aside from the robot arms it is really hard to make a decision
+
+----- 000006 both win here 
+
+
+#############
+
+We go back to Dynavision
+-> prompt base via https://civitai.com/images/3740620
+
+- for epoch 4 we see lots of robot arms
+- both epoch 5 und 6 are very consistent when it comes to the arms
+- 
+
+
+#############
+
+we choose epoch 6 as the final LoRA which in the end was trainer with 6000 training steps
+- after looking back across all grids to check how epoch 6 compares to 5 as I nominated them as a winners it becomes clear that 6 was very close anyways
+- the issue with the 2 robot arms could become a problem with different models and tbh I dont see any major reason why we shouldn't go for epoch 6 over 5 having that in mind.
+
+
+
+
+
+
+---> Note: This is the SDXL evaluation -- I dind't document the SD15 process 

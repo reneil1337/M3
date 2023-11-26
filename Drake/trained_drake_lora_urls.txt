@@ -1,0 +1,5 @@
+Download Drake SDXL LoRA via
+https://reneil.mypinata.cloud/ipfs/QmRJQNAgfwfazykXiCP8tkomcUPvUZmn3Z5Lab8JBLkTjm/DrakeVRM.safetensors
+
+Download Drake SD 1.5 LoRA via
+https://reneil.mypinata.cloud/ipfs/QmRJQNAgfwfazykXiCP8tkomcUPvUZmn3Z5Lab8JBLkTjm/DrakeVRM_SD15.safetensors

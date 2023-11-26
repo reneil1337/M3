@@ -1,0 +1,45 @@
+first img: blue pencil
+
+- both legs ripped open from epoch 7 upwards in multiple seeds
+- belt looks wrong in epoch 2
+- red print on the shirt best in epoch 3 across seeds
+- almost always wrong print shape on shirt from epoch 4 upward
+- kicking out 2+8
+
+--> 000003 wins
+
+
+############
+
+nxt: dynavisionXL
+
+- shirt print is off occasionally across the grid. no pattern really
+- collar of the cape in epoch 3 is a bit off on most seeds
+- the lower epochs (3-5) in general look pretty good
+- stripping away epoch 6+7
+- overall 5 is most consistent
+- doing a second grid with detailed eyes prompt
+	- 
+
+--> 000005 wins
+
+#########
+
+another dynavision
+
+
+- overall epoch 5 looks best as the cape collar is more accurate compared to 3
+- eye color is almost always off. might have to do with the "finely detailed beautiful eyes" in the prompt
+	- prompting without that the quality of the eyes sucks so its a trade off and 
+	- has todo with the dynavision model as the "finely detailed beautiful eyes" was copied from the bluepencil prompt where it didnt impact color
+- on most seeds eyes still look bad
+- realized that the fracolor was the reason. creating another grid	
+
+
+--> 000005 wins
+
+
+#########
+
+
+Note --> This is the SDXL evaluation -- I dind't document the SD15 process

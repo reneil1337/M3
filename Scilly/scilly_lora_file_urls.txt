@@ -1,0 +1,5 @@
+Download Scilly SDXL LoRA via
+https://reneil.mypinata.cloud/ipfs/QmNj887a3AyU1rLtK2UPHYm6fZ6ta1G7n5aphcvc5tC4Rn/ScillyVRM.safetensors
+
+Download Scilly SD 1.5 LoRA via
+https://reneil.mypinata.cloud/ipfs/QmNj887a3AyU1rLtK2UPHYm6fZ6ta1G7n5aphcvc5tC4Rn/ScillyVRM_SD15.safetensors
